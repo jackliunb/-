@@ -1,7 +1,15 @@
 //第一题
+trait Time {
+    fn time(&self) -> u8;
+}
+
 fn main() {
     let light = TrafficLight::Red;
     println!("light is: {}", light.time());
+    let light = TrafficLight::Green;
+    println!("green time is {}", light.time());
+    let light = TrafficLight::Yellow;
+    println!("yellow time is {}", light.time());
 }
 
 enum TrafficLight {
@@ -10,12 +18,17 @@ enum TrafficLight {
     Yellow,
 }
 
-impl TrafficLight {
-    fn time(&self) -> u8{
-        60
+impl Time for TrafficLight {
+    fn time(&self) -> u8 {
+        match self {
+            Self::Red => 30,
+            Self::Green => 40,
+            Self::Yellow => 3,
+        }
     }
 }
 
+//第二题未做出来
 
 //第三题
 struct Rectangle {
